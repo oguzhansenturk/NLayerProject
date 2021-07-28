@@ -60,5 +60,13 @@ namespace NLayerProject.API.Controllers
             return NoContent();
 
         }
+
+        [HttpGet("{id}/category")]
+        public async Task<IActionResult> GetWithCategoryById(int id)
+        {
+            var product = await _productService.GetWithCategoryByIdAsync(id);
+            return Ok(_mapper.Map<ProductWithCategoryDto>(product));
+
+        }
     }
 }
