@@ -14,6 +14,7 @@
     <None Remove="Microsoft.EntityFrameworkCore.Design" />
     <None Remove="Configurations\" />
     <None Remove="Seeds\" />
+    <None Remove="Package" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.8" />
