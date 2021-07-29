@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using NLayerProject.API.DTOs;
+using NLayerProject.API.Filters;
 using NLayerProject.Core.Models;
 using NLayerProject.Core.Services;
 using System;
@@ -24,6 +25,7 @@ namespace NLayerProject.API.Controllers
             _mapper = mapper;
         }
 
+        
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
@@ -31,6 +33,7 @@ namespace NLayerProject.API.Controllers
             return Ok(_mapper.Map<IEnumerable<ProductDto>>(products));
         }
 
+        [ServiceFilter(typeof(NotFoundFilter))]
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(int id)
         {
@@ -52,6 +55,7 @@ namespace NLayerProject.API.Controllers
             return NoContent();
         }
 
+        [ServiceFilter(typeof(NotFoundFilter))]
         [HttpDelete("{id}")]
         public IActionResult Remove(int id)
         {
@@ -61,6 +65,7 @@ namespace NLayerProject.API.Controllers
 
         }
 
+        [ServiceFilter(typeof(NotFoundFilter))]
         [HttpGet("{id}/category")]
         public async Task<IActionResult> GetWithCategoryById(int id)
         {
